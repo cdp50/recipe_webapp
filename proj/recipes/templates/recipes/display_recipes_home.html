@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recipes/style.css' %}">
+    <title>Recipes by ingredients</title>
+</head>
+<body>
+    <header>
+        <h1>Recipe by ingredients</h1>
+    </header>
+    <main>
+        <span>
+            <h3>Separate each ingredient with comma and space. eg: Tomato, milk</h3>
+        
+            <!-- the action=" " is to say that I want to call search again, but because this time
+            the post is populated the if statement should activate and return new information -->
+            <form action="{% url 'search' %}" method="POST">
+                {% csrf_token %}
+                ingredients: <input type="text" id="ingredients" name="ingredients"><br>
+                <input type="submit" name="search" value="Search"><br>
+                <!-- the name=" " is somehow related to the link(path) -->
+                <!-- name="" is for the form. so the user adds info and views can use it by
+                calling the name tag. name="" is to Get from the user not to post to the user
+                that means that is not what I need -->
+                <!-- I think that if I want to add many different staff in my website I will need to 
+                add them all to the dictionary and then from the dictionary I have to add it to 
+                the HTML -->
+                <p id="instructionsOn"></p>
+            </form>
+        </span>
+        
+    </main>
+    <footer></footer>
+    
+</body>
+</html>

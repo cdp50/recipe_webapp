@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recipes/style.css' %}">
+    <title>Random Recipes</title>
+</head>
+<body>
+    <main>
+        <span>
+            <h1>Random Recipes</h1>
+            
+            <form action="{% url 'random_search' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="random_search" value="Random Search"><br>
+            </form>
+        </span>
+    
+    
+        <img src="{{recipe_img}}" alt="recipe card">
+    </main>
+    
+    
+</body>
+</html>
